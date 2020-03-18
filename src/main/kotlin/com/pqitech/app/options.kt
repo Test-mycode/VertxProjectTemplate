@@ -16,6 +16,7 @@ fun parseArgs(args : Array<String>,name : String = args[0]) : JsonObject
   val logFilePath = cli.getRawValueForOption(log)
   if(logFilePath.isNotEmpty()){
     System.setProperty("log4j2.configurationFile",logFilePath)
+    System.setProperty("log4j.configurationFile",logFilePath)
   }
   val file = FileReader(configFile)
   return JsonObject(file.readText())
