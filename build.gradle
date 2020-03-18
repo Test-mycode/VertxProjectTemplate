@@ -26,6 +26,7 @@ ext {
     kotlinVersion = '1.3.70'
     vertxVersion = '4.0.0-SNAPSHOT'
     junitJupiterEngineVersion = '5.4.0'
+    log4jVerion = '2.13.1'
 }
 
 dependencies {
@@ -65,8 +66,11 @@ dependencies {
 // pg jdbc
 //  implementation "org.postgresql:postgresql:42.1.4"
 
-    compile 'org.apache.logging.log4j:log4j-core:2.13.1'
-    compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.13.1'
+  implementation "org.apache.logging.log4j:log4j-api:$log4jVerion"
+  implementation "org.apache.logging.log4j:log4j-jcl:$log4jVerion"
+  implementation "org.apache.logging.log4j:log4j-core:$log4jVerion"
+  implementation "org.apache.logging.log4j:log4j-slf4j-impl:$log4jVerion"
+  implementation "org.slf4j:slf4j-api:1.7.30"
     testImplementation "io.vertx:vertx-junit5:$vertxVersion"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitJupiterEngineVersion"
     testImplementation "org.junit.jupiter:junit-jupiter-api:$junitJupiterEngineVersion"

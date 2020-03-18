@@ -1,13 +1,8 @@
 package com.pqitech.app
 
-import io.netty.util.internal.logging.InternalLoggerFactory
-import io.netty.util.internal.logging.Log4J2LoggerFactory
 import io.vertx.core.cli.CLI
 import io.vertx.core.cli.Option;
 import io.vertx.core.json.JsonObject;
-import org.apache.logging.log4j.core.config.ConfigurationSource
-import org.apache.logging.log4j.core.config.Configurator
-import java.io.FileInputStream
 import java.io.FileReader
 
 fun parseArgs(args : Array<String>,name : String = args[0]) : JsonObject
@@ -23,7 +18,5 @@ fun parseArgs(args : Array<String>,name : String = args[0]) : JsonObject
     System.setProperty("log4j.configurationFile",logFilePath)
   }
   val file = FileReader(configFile)
-  InternalLoggerFactory.setDefaultFactory(Log4J2LoggerFactory.INSTANCE)
-  System.setProperty("vertx.logger-delegate-factory-class-name","io.vertx.core.logging.Log4j2LogDelegateFactory")
   return JsonObject(file.readText())
 }
