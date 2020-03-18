@@ -20,10 +20,10 @@ fun parseArgs(args : Array<String>,name : String = args[0]) : JsonObject
   println("the config file is: $configFile")
   val logFilePath = cli.getRawValueForOption(log)
   if(logFilePath.isNotEmpty()){
-    val fileLog = FileInputStream(logFilePath)
-    Configurator.initialize(null,ConfigurationSource(fileLog))
+    System.setProperty("log4j.configurationFile",logFilePath)
   }
   val file = FileReader(configFile)
   InternalLoggerFactory.setDefaultFactory(Log4J2LoggerFactory.INSTANCE)
+  System.setProperty("vertx.logger-delegate-factory-class-name","io.vertx.core.logging.Log4j2LogDelegateFactory")
   return JsonObject(file.readText())
 }
