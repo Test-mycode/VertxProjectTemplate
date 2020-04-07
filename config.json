@@ -139,5 +139,58 @@
     "initial_pool_size":5,
     "min_pool_size":2,
     "max_pool_size":15
+  },
+  "redis" : {
+    "endpoint":"redis://127.0.0.1:6379",
+    "endpoints":[
+      "redis://127.0.0.1:6379"
+    ],
+    "masterName":"mymaster",
+    "maxNestedArrays":32,
+    "maxPoolSize":6,
+    "maxPoolWaiting":24,
+    "maxWaitingHandlers":2048,
+    "netClientOptions":{
+      "logActivity":false,
+      "receiveBufferSize":-1,
+      "reuseAddress":true,
+      "reusePort":false,
+      "sendBufferSize":-1,
+      "trafficClass":-1,
+      "crlPaths":[
+
+      ],
+      "crlValues":[
+
+      ],
+      "enabledCipherSuites":[
+
+      ],
+      "enabledSecureTransportProtocols":[
+        "TLSv1",
+        "TLSv1.1",
+        "TLSv1.2"
+      ],
+      "idleTimeout":0,
+      "idleTimeoutUnit":"SECONDS",
+      "soLinger":-1,
+      "ssl":false,
+      "sslHandshakeTimeout":10,
+      "sslHandshakeTimeoutUnit":"SECONDS",
+      "tcpCork":false,
+      "tcpFastOpen":false,
+      "tcpKeepAlive":true,
+      "tcpNoDelay":true,
+      "tcpQuickAck":false,
+      "useAlpn":false,
+      "connectTimeout":60000,
+      "metricsName":"",
+      "trustAll":false
+    },
+    "poolCleanerInterval":-1,
+    "poolRecycleTimeout":15000,
+    "role":"MASTER",
+    "type":"STANDALONE",
+    "useSlave":"NEVER"
   }
 }
