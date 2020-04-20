@@ -192,5 +192,9 @@
     "role":"MASTER",
     "type":"STANDALONE",
     "useSlave":"NEVER"
+  },
+  "monogo": {
+    "db_name" : "pos",
+    "connection_string" : "mongodb://127.0.0.1:27017"
   }
 }
