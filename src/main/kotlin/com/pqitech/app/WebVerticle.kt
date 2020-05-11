@@ -3,7 +3,6 @@ package com.pqitech.app
 import com.pqitech.utils.bodyHandle
 import com.pqitech.utils.enableCors
 import com.pqitech.vertx.AbstractWebVerticle
-import com.pqitech.my.addRouter
 import org.apache.logging.log4j.LogManager
 
 
