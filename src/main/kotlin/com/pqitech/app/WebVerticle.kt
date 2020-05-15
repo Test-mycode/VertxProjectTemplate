@@ -3,6 +3,7 @@ package com.pqitech.app
 import com.pqitech.utils.bodyHandle
 import com.pqitech.utils.enableCors
 import com.pqitech.vertx.AbstractWebVerticle
+import io.vertx.ext.web.RoutingContext
 import org.apache.logging.log4j.LogManager
 
 
@@ -22,5 +23,9 @@ class WebVerticle : AbstractWebVerticle() {
 //      }
 //    }
     addRouter(httpRouter) // 添加router
+  }
+  // 自定义处理时抛异常的处理
+  override fun doFailureHandle(context: RoutingContext) {
+    super.doFailureHandle(context)
   }
 }
