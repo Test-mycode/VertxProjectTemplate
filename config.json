@@ -104,7 +104,7 @@
     "clientAuth":"NONE",
     "clientAuthRequired":false,
     "host":"0.0.0.0",
-    "port":1087,
+    "port":80,
     "sni":false,
     "acceptUnmaskedFrames":false,
     "alpnVersions":[
@@ -131,14 +131,13 @@
     "maxWebsocketFrameSize":65536,
     "maxWebsocketMessageSize":262144
   },
-  "jdbc":{
-    "driver_class":"org.postgresql.Driver",
-    "url":"jdbc:postgresql://localhost:5432/pqdemo",
-    "user":"postgres",
-    "password":"123789",
-    "initial_pool_size":5,
-    "min_pool_size":2,
-    "max_pool_size":15
+  "jasync": {
+    "host": "localhost",
+    "port": 5432,
+    "maxPoolSize": 15,
+    "username": "postgres",
+    "database": "postgres",
+    "password":"123456789"
   },
   "redis" : {
     "endpoint":"redis://127.0.0.1:6379",

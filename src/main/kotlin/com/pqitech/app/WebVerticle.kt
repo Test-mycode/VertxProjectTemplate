@@ -1,5 +1,6 @@
 package com.pqitech.app
 
+import com.pqitech.router.addRouter
 import com.pqitech.utils.bodyHandle
 import com.pqitech.utils.enableCors
 import com.pqitech.vertx.AbstractWebVerticle
@@ -22,7 +23,7 @@ class WebVerticle : AbstractWebVerticle() {
 //        it.reject(302);
 //      }
 //    }
-    addRouter(httpRouter) // 添加router
+    addRouter(vertx, httpRouter) // 添加router
   }
   // 自定义处理时抛异常的处理
   override fun doFailureHandle(context: RoutingContext) {

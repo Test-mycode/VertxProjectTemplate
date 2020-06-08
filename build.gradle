@@ -1,45 +1,53 @@
 plugins {
-    id 'java'
-    id 'org.jetbrains.kotlin.jvm' version '1.3.70'
-    id 'application'
-    id 'com.github.johnrengelman.shadow' version '5.0.0'
+  id 'java'
+  id 'org.jetbrains.kotlin.jvm' version '1.3.70'
+  id 'application'
+  id 'com.github.johnrengelman.shadow' version '5.0.0'
 }
 
 group 'com.pqitech.GradleExp'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 11
 
 repositories {
-    maven { url 'https://maven.aliyun.com/repository/public' }
-    maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
-    maven {
-        url 'https://oss.sonatype.org/content/repositories/snapshots'
-        mavenContent {
-            snapshotsOnly()
-        }
+  maven { url 'https://maven.aliyun.com/repository/public' }
+  maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+  maven {
+    url 'https://oss.sonatype.org/content/repositories/snapshots'
+    mavenContent {
+      snapshotsOnly()
     }
-    mavenCentral()
+  }
+  mavenCentral()
 }
 
 ext {
-    kotlinVersion = '1.3.70'
-    vertxVersion = '4.0.0-SNAPSHOT'
-    junitJupiterEngineVersion = '5.4.0'
-    log4jVerion = '2.13.1'
+  jacksonVersion = '2.11.0'
+  elVersion = "3.0.0"
+  hibernateValidatorVersion = '6.1.5.Final'
+  kotlinVersion = '1.3.70'
+  vertxVersion = '3.9.1'
+  junitJupiterEngineVersion = '5.4.0'
+  log4jVerion = '2.13.1'
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
   // 加载本地的 jar，放在libs目录的
-    implementation fileTree(dir: 'libs', includes: ['*.jar'])
+  implementation fileTree(dir: 'libs', includes: ['*.jar'])
   //vertx kotlin扩展
-    implementation "io.vertx:vertx-lang-kotlin:$vertxVersion"
-    implementation "io.vertx:vertx-web-client:$vertxVersion"
-    implementation "io.vertx:vertx-web:$vertxVersion"
-    implementation "io.vertx:vertx-lang-kotlin-coroutines:$vertxVersion"
-//  implementation "io.vertx:vertx-pg-client:$vertxVersion"
-//  implementation "io.vertx:vertx-mysql-client:$vertxVersion"
+  implementation "io.vertx:vertx-lang-kotlin:$vertxVersion"
+  implementation "io.vertx:vertx-web-client:$vertxVersion"
+  implementation "io.vertx:vertx-web:$vertxVersion"
+  implementation "io.vertx:vertx-lang-kotlin-coroutines:$vertxVersion"
+
+
+  implementation "org.glassfish:javax.el:$elVersion"
+  implementation "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
+  implementation "com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion"
+  implementation "com.fasterxml.jackson.module:jackson-module-afterburner:$jacksonVersion"
+  implementation "org.hibernate.validator:hibernate-validator:$hibernateValidatorVersion"
 
 //    implementation "io.vertx:vertx-service-proxy:$vertxVersion"
 //    implementation "io.vertx:vertx-amqp-client:$vertxVersion"
@@ -50,11 +58,9 @@ dependencies {
 //    implementation "io.vertx:vertx-tcp-eventbus-bridge:$vertxVersion"
 //    implementation "io.vertx:vertx-sockjs-service-proxy:$vertxVersion"
 
-// JDBC 依赖
-//    implementation "io.vertx:vertx-jdbc-client:$vertxVersion"
-// PGSQL jdbc需要以来的驱动
-//  implementation "org.postgresql:postgresql:42.2.12"
-
+// jasync 依赖
+  implementation "io.vertx:vertx-mysql-postgresql-client-jasync:$vertxVersion"
+//  implementation "org.mirrentools:vertx-sql-assist:1.0.7"
 //    implementation "io.vertx:vertx-service-factory:$vertxVersion"
 // Monogo 依赖
 //    implementation "io.vertx:vertx-mongo-client:$vertxVersion"
@@ -74,16 +80,16 @@ dependencies {
 //    implementation "io.vertx:vertx-consul-client:$vertxVersion"
 //    implementation "io.vertx:vertx-rabbitmq-client:$vertxVersion"
 //    implementation "io.vertx:vertx-kafka-client:$vertxVersion"
-
+// PGSQL jdbc需要以来的驱动
 
   implementation "org.apache.logging.log4j:log4j-api:$log4jVerion"
   implementation "org.apache.logging.log4j:log4j-jcl:$log4jVerion"
   implementation "org.apache.logging.log4j:log4j-core:$log4jVerion"
   implementation "org.apache.logging.log4j:log4j-slf4j-impl:$log4jVerion"
   implementation "org.slf4j:slf4j-api:1.7.30"
-    testImplementation "io.vertx:vertx-junit5:$vertxVersion"
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitJupiterEngineVersion"
-    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitJupiterEngineVersion"
+  testImplementation "io.vertx:vertx-junit5:$vertxVersion"
+  testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitJupiterEngineVersion"
+  testImplementation "org.junit.jupiter:junit-jupiter-api:$junitJupiterEngineVersion"
 }
 
 application {
@@ -92,14 +98,14 @@ application {
 
 
 compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+  kotlinOptions.jvmTarget = "11"
 }
 compileTestKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+  kotlinOptions.jvmTarget = "11"
 }
 
 shadowJar {
-    zip64(true)
+  zip64(true)
 
   mergeServiceFiles {
     include 'META-INF/services/io.vertx.core.spi.VerticleFactory'
