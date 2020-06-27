@@ -1,7 +1,7 @@
 package com.pqitech.model
-import io.vertx.ext.sql.mapper.Table
-import io.vertx.ext.sql.mapper.TableColumn
-import io.vertx.ext.sql.mapper.TableId
+import io.vertx.ext.sql.assist.anno.Table
+import io.vertx.ext.sql.assist.anno.TableColumn
+import io.vertx.ext.sql.assist.anno.TableId
 import java.sql.Timestamp
 import java.util.*
 

@@ -25,6 +25,7 @@ repositories {
 ext {
   jacksonVersion = '2.11.0'
   elVersion = "3.0.0"
+  jasyncVersion = "1.1.3"
   hibernateValidatorVersion = '6.1.5.Final'
   kotlinVersion = '1.3.70'
   vertxVersion = '3.9.1'
@@ -60,7 +61,9 @@ dependencies {
 
 // jasync 依赖
   implementation "io.vertx:vertx-mysql-postgresql-client-jasync:$vertxVersion"
-//  implementation "org.mirrentools:vertx-sql-assist:1.0.7"
+  implementation "com.github.jasync-sql:jasync-common:$jasyncVersion"
+  implementation "com.github.jasync-sql:jasync-mysql:$jasyncVersion"
+  implementation "com.github.jasync-sql:jasync-postgresql:$jasyncVersion"
 //    implementation "io.vertx:vertx-service-factory:$vertxVersion"
 // Monogo 依赖
 //    implementation "io.vertx:vertx-mongo-client:$vertxVersion"
